@@ -1,0 +1,9 @@
+root = true
+
+[*.{html,md}]
+indent_style = space
+indent_size = 2
+
+[*.{css,go,js}]
+indent_style = tab
+indent_size = 4
