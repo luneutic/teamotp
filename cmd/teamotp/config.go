@@ -8,7 +8,6 @@ import (
 )
 
 type Config struct {
-	Port       int
 	LdapHost   string
 	LdapDomain string
 }

@@ -82,7 +82,7 @@ func main() {
 		Path:     "/",
 		MaxAge:   3600 * 8,
 		HttpOnly: true,
-		Secure:   false,
+		Secure:   true,
 		SameSite: http.SameSiteLaxMode,
 	})
 	r.Use(sessions.Sessions("session", store))
@@ -136,8 +136,7 @@ func main() {
 		c.AbortWithStatus(http.StatusNotFound)
 	})
 
-	// err := r.RunTLS(fmt.Sprintf(":%d", config.Port), "cert.pem", "key.pem")
-	err := r.Run(fmt.Sprintf(":%d", config.Port))
+	err := r.RunTLS(fmt.Sprintf(":%d", 6443), "data/cert.pem", "data/key.pem")
 	if err != nil {
 		log.Fatal(err)
 	}

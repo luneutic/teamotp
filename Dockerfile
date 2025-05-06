@@ -24,5 +24,5 @@ FROM alpine:latest
 WORKDIR /app
 COPY --from=builder /app/teamotp.bin .
 COPY --from=builder /app/web ./web
-EXPOSE 8081
+EXPOSE 6443
 ENTRYPOINT ["./teamotp.bin"]

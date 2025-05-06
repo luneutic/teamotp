@@ -1,19 +1,27 @@
 # TeamOTP
 ## Quick Start
-Create config file
+Create the config file
 ```sh
 mkdir data
 nano data/config.toml
 ```
 
-Add the following content
+with content:
 ```toml
-Port = 8081
-LdapHost = "IP of domain controller"
+# IP of domain controller
+LdapHost = "169.254.42.10"
+
+# Domain name
 LdapDomain = "mydomain.com"
 ```
 
-Build and run container
+_Internal Use_: Create a self signed certificate.
+Move them to `data/cert.pem` and `data/key.pem`.
+```sh
+mkcert <internal IP>
+```
+
+Build and run container.
 ```sh
 docker-compose up --build -d
 ```
