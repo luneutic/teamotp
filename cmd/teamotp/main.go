@@ -16,8 +16,8 @@ import (
 )
 
 func init() {
-	loadConfig("config.toml")
-	init_db("teamotp.db")
+	loadConfig("data/config.toml")
+	init_db("data/teamotp.db")
 }
 
 func Login(c *gin.Context) {
@@ -78,6 +78,13 @@ func main() {
 	r := gin.Default()
 
 	store := cookie.NewStore([]byte("secret"))
+	store.Options(sessions.Options{
+		Path:     "/",
+		MaxAge:   3600 * 8,
+		HttpOnly: true,
+		Secure:   false,
+		SameSite: http.SameSiteLaxMode,
+	})
 	r.Use(sessions.Sessions("session", store))
 
 	r.Use(Default_404())
