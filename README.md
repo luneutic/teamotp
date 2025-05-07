@@ -22,7 +22,7 @@ Create and run `docker-compose.yml`:
 ```yml
 services:
   teamotp:
-    image: ghcr.io/luneutic/teamotp:0.1.0-pre
+    image: ghcr.io/luneutic/teamotp:0.1.0
     container_name: teamotp
     ports:
       - 6443:6443
