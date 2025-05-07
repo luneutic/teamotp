@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"log"
 	"net/http"
 	"strconv"
@@ -48,10 +49,17 @@ func AddOtp(c *gin.Context) {
 		return
 	}
 
-	label := c.PostForm("label")
-	secret := c.PostForm("secret")
+	bodyBytes, err := io.ReadAll(c.Request.Body)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Failed to read request body"})
+		return
+	}
 
-	otp := models.NewOTPCode(label, "", secret, "", 0, 0)
+	otpURL := string(bodyBytes)
+	otp, err := models.OTPCodeFromURL(otpURL)
+	if err != nil {
+		log.Fatal(err)
+	}
 	if err := otp.SaveToDB(); err != nil {
 		log.Fatal(err)
 	}
@@ -103,7 +111,7 @@ func main() {
 		session.Delete("error")
 		session.Save()
 
-		c.HTML(http.StatusOK, "index.html", gin.H{
+		c.HTML(http.StatusOK, "login.html", gin.H{
 			"error": errMsg,
 		})
 	})
@@ -124,6 +132,14 @@ func main() {
 		c.HTML(http.StatusOK, "otp.html", gin.H{
 			"otps": otps,
 		})
+	})
+
+	r.GET("/otp/qrscan", func(c *gin.Context) {
+		if Unauthorized_404(c) {
+			return
+		}
+
+		c.HTML(http.StatusOK, "qrscan.html", nil)
 	})
 
 	r.POST("/login", Login)

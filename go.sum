@@ -12,6 +12,10 @@ github.com/bytedance/sonic/loader v0.2.4/go.mod h1:N8A3vUdtUebEY2/VQC0MyhYeKUFos
 github.com/cloudwego/base64x v0.1.5 h1:XPciSp1xaq2VCSt6lF0phncD4koWyULpl5bUxbfCyP4=
 github.com/cloudwego/base64x v0.1.5/go.mod h1:0zlkT4Wn5C6NdauXdJRhSKRlJvmclQ1hhJgA0rcu/8w=
 github.com/cloudwego/iasm v0.2.0/go.mod h1:8rXZaNYT2n95jn+zTI1sDr+IgcD2GVs0nlbbQPiEFhY=
+github.com/creachadair/otp v0.5.0 h1:q3Th7CXm2zlmCdBjw5tEPFOj4oWJMnVL5HXlq0sNKS0=
+github.com/creachadair/otp v0.5.0/go.mod h1:0kceI87EnYFNYSTL121goJVAnk3eJhaed9H0nMuJUkA=
+github.com/creachadair/wirepb v0.0.0-20240525191938-8530265c0822 h1:qMXKIQdq1vG9AQjejDZ6GEab9DNWb72O/dvxEpJF/yA=
+github.com/creachadair/wirepb v0.0.0-20240525191938-8530265c0822/go.mod h1:N3X4c2/WeOpnFyf5lL46Pc3VXFrfqdwCR+JIHNCHaGU=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/gabriel-vasile/mimetype v1.4.8 h1:FfZ3gj38NjllZIeJAmMhr+qKL8Wu+nOoI3GqacKw1NM=

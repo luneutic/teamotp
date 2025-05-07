@@ -31,6 +31,9 @@ docker-compose up --build -d
 # Local binary
 go build -o teamotp.bin ./cmd/teamotp
 
+# Or run directly
+go run ./cmd/teamotp
+
 # Docker container
 DOCKER_BUILDKIT=1 docker build -t teamotp .
 ```

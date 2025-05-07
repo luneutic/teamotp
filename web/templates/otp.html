@@ -15,7 +15,9 @@
   </nav>
 
   <section>
-    <button onclick="showOtpForm()">Add new OTP</button>
+    <form action="/otp/qrscan" method="get">
+      <button type="submit">Add new OTP</button>
+    </form>
 
     <div class="otp-cnt">
       {{ range .otps }}
@@ -23,24 +25,12 @@
           <div class="timer-bar-cnt">
             <div class="timer-bar" data-period="{{ .Period }}"></div>
           </div>
-          <span>{{ .Label }}</span>
+          <span>{{ .Issuer }}</span>
           <span class="otp-value">&lowast;&lowast;&lowast;&lowast;&lowast;&lowast;</span>
         </div>
       {{ end }}
     </div>
   </section>
-
-  <div class="modal" id="add-otp">
-    <form class="modal-content" action="/otp/add" method="post">
-      <h2>Add new OTP</h2>
-      <label>Label</label>
-      <input type="text" id="label" name="label" required>
-      <label>Secret</label>
-      <input type="text" id="secret" name="secret" required>
-      <button class="highlight" type="submit">Save</button>
-      <button type="button" onclick="hideOtpForm()">Cancel</button>
-    </form>
-  </div>
 
   <script src="/static/js/otp.js"></script>
   <script src="/static/js/timer.js"></script>

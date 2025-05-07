@@ -1,27 +1,30 @@
 package models
 
-import "github.com/beego/beego/v2/client/orm"
+import (
+	"github.com/beego/beego/v2/client/orm"
+	"github.com/creachadair/otp/otpauth"
+)
 
 const TableName = "otp_code"
 
 type OTPCode struct {
-	Id     uint `orm:"auto"`
-	Label  string
-	User   string
-	Secret string
-	Algo   string
-	Digits int
-	Period int
+	Id      uint `orm:"auto"`
+	Issuer  string
+	Account string
+	Secret  string
+	Algo    string
+	Digits  int
+	Period  int
 }
 
-func NewOTPCode(label, user, secret, algo string, digits, period int) *OTPCode {
+func NewOTPCode(Issuer, acc, secret, algo string, digits, period int) *OTPCode {
 	otp := &OTPCode{
-		Label:  label,
-		User:   user,
-		Secret: secret,
-		Algo:   algo,
-		Digits: digits,
-		Period: period,
+		Issuer:  Issuer,
+		Account: acc,
+		Secret:  secret,
+		Algo:    algo,
+		Digits:  digits,
+		Period:  period,
 	}
 
 	if otp.Algo == "" {
@@ -37,6 +40,23 @@ func NewOTPCode(label, user, secret, algo string, digits, period int) *OTPCode {
 	}
 
 	return otp
+}
+
+func OTPCodeFromURL(url string) (*OTPCode, error) {
+	url_obj, err := otpauth.ParseURL(url)
+	if err != nil {
+		return nil, err
+	}
+
+	otp := &OTPCode{
+		Issuer:  url_obj.Issuer,
+		Account: url_obj.Account,
+		Secret:  url_obj.RawSecret,
+		Algo:    url_obj.Algorithm,
+		Digits:  url_obj.Digits,
+		Period:  url_obj.Period,
+	}
+	return otp, nil
 }
 
 func (o *OTPCode) TableName() string {
