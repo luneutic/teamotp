@@ -24,23 +24,3 @@ const copyOtp = (otpCard) => {
 		setTimeout(() => { otpValSpan.innerHTML = S_LOWAST }, COPIED_DURATION)
 	})
 }
-
-// === Add OTP Modal ===
-
-const otpForm = document.querySelector(".modal#add-otp")
-
-const showOtpForm = () => {
-	otpForm.style.display = "block"
-}
-
-const hideOtpForm = () => {
-	otpForm.style.display = "none"
-}
-
-const modalOutsideClick = (ev) => {
-	if (ev.target === otpForm) {
-		hideOtpForm()
-	}
-}
-
-otpForm.addEventListener("click", modalOutsideClick)
