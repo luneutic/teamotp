@@ -1,6 +1,6 @@
 *.code-workspace
 
 *.bin
-*.db
-*.pem
 data/
+
+docker-compose.yml

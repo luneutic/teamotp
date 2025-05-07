@@ -21,9 +21,16 @@ Move them to `data/cert.pem` and `data/key.pem`.
 mkcert <internal IP>
 ```
 
-Build and run container.
-```sh
-docker-compose up --build -d
+Create and run `docker-compose.yml`:
+```
+services:
+  teamotp:
+    image: ghcr.io/luneutic/teamotp:0.1.0-pre
+    container_name: teamotp
+    ports:
+      - 6443:6443
+    volumes:
+      - ./data:/app/data
 ```
 
 ## Building
