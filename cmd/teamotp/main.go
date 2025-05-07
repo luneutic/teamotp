@@ -68,14 +68,20 @@ func AddOtp(c *gin.Context) {
 }
 
 func GetOtpValue(c *gin.Context) {
+	if Unauthorized_404(c) {
+		return
+	}
+
 	id, err := strconv.ParseUint(c.Param("id"), 10, 32)
 	if err != nil {
-		log.Fatal(err)
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid ID"})
+		return
 	}
 
 	otp, err := models.GetOtpById(uint(id))
 	if err != nil {
-		log.Fatal(err)
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Failed to get OTP code"})
+		return
 	}
 
 	totp := gotp.NewDefaultTOTP(otp.Secret)

@@ -8,10 +8,7 @@ nano data/config.toml
 
 with content:
 ```toml
-# IP of domain controller
 LdapHost = "169.254.42.10"
-
-# Domain name
 LdapDomain = "mydomain.com"
 ```
 
@@ -22,7 +19,7 @@ mkcert <internal IP>
 ```
 
 Create and run `docker-compose.yml`:
-```
+```yml
 services:
   teamotp:
     image: ghcr.io/luneutic/teamotp:0.1.0-pre

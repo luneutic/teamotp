@@ -17,31 +17,6 @@ type OTPCode struct {
 	Period  int
 }
 
-func NewOTPCode(Issuer, acc, secret, algo string, digits, period int) *OTPCode {
-	otp := &OTPCode{
-		Issuer:  Issuer,
-		Account: acc,
-		Secret:  secret,
-		Algo:    algo,
-		Digits:  digits,
-		Period:  period,
-	}
-
-	if otp.Algo == "" {
-		otp.Algo = "SHA1"
-	}
-
-	if otp.Digits == 0 {
-		otp.Digits = 6
-	}
-
-	if otp.Period == 0 {
-		otp.Period = 30
-	}
-
-	return otp
-}
-
 func OTPCodeFromURL(url string) (*OTPCode, error) {
 	url_obj, err := otpauth.ParseURL(url)
 	if err != nil {
