@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <title>TeamOTP</title>
+</head>
+
+<body>
+  <nav>
+    <form action="/logout" method="get">
+      <button type="submit">Logout</button>
+    </form>
+  </nav>
+
+  <section>
+    <form action="/otp/qrscan" method="get">
+      <button type="submit">Add new OTP</button>
+    </form>
+
+    <div class="otp-cnt">
+      {{ range .otps }}
+        <div onclick="copyOtp(this)" class="otp-card" data-id="{{ .Id }}">
+          <div class="timer-bar-cnt">
+            <div class="timer-bar" data-period="{{ .Period }}"></div>
+          </div>
+          <span><b>{{ .Issuer }}</b></span>
+          <span>{{ .Account }}</span>
+          <span class="otp-value">&lowast;&lowast;&lowast;&lowast;&lowast;&lowast;</span>
+        </div>
+      {{ end }}
+    </div>
+  </section>
+
+  <script src="/static/js/otp.js"></script>
+  <script src="/static/js/timer.js"></script>
+</body>
+</html>

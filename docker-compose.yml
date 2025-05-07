@@ -1,0 +1,10 @@
+services:
+  teamotp:
+    container_name: teamotp
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 6443:6443
+    volumes:
+      - ./data:/app/data

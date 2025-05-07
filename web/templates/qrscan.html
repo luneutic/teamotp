@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <title>TeamOTP</title>
+</head>
+
+<body>
+  <nav>
+    <form action="/logout" method="get">
+      <button type="submit">Logout</button>
+    </form>
+  </nav>
+
+  <form action="/otp" method="get">
+    <button type="submit">Back</button>
+  </form>
+
+  <div id="qr-reader" width="600px"></div>
+
+  <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+  <script src="/static/js/qrscan.js"></script>
+</body>
+</html>
