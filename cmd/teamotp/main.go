@@ -16,6 +16,8 @@ import (
 	"github.com/xlzd/gotp"
 )
 
+const version = "0.1.0"
+
 func init() {
 	loadConfig("data/config.toml")
 	init_db("data/teamotp.db")
@@ -118,7 +120,8 @@ func main() {
 		session.Save()
 
 		c.HTML(http.StatusOK, "login.html", gin.H{
-			"error": errMsg,
+			"error":   errMsg,
+			"version": version,
 		})
 	})
 
@@ -140,6 +143,7 @@ func main() {
 		c.HTML(http.StatusOK, "otp.html", gin.H{
 			"otps":     otps,
 			"username": session.Get("username"),
+			"version":  version,
 		})
 	})
 
