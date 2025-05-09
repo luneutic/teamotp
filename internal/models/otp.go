@@ -1,6 +1,8 @@
 package models
 
 import (
+	"strings"
+
 	"github.com/beego/beego/v2/client/orm"
 	"github.com/creachadair/otp/otpauth"
 )
@@ -26,7 +28,7 @@ func OTPCodeFromURL(url string) (*OTPCode, error) {
 	otp := &OTPCode{
 		Issuer:  url_obj.Issuer,
 		Account: url_obj.Account,
-		Secret:  url_obj.RawSecret,
+		Secret:  strings.ToUpper(url_obj.RawSecret), // base32 requires upper case
 		Algo:    url_obj.Algorithm,
 		Digits:  url_obj.Digits,
 		Period:  url_obj.Period,
