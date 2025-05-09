@@ -127,6 +127,8 @@ func main() {
 			return
 		}
 
+		session := sessions.Default(c)
+
 		var otps []models.OTPCode
 		o := orm.NewOrm()
 		_, err := o.QueryTable("otp_code").All(&otps)
@@ -136,7 +138,8 @@ func main() {
 		}
 
 		c.HTML(http.StatusOK, "otp.html", gin.H{
-			"otps": otps,
+			"otps":     otps,
+			"username": session.Get("username"),
 		})
 	})
 

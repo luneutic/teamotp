@@ -7,6 +7,7 @@
 	--pad: 6px;
 	--pad-2: calc(var(--pad) * 2);
 	--pad-3: calc(var(--pad) * 3);
+	--pad-4: calc(var(--pad) * 4);
 }
 
 body {
@@ -16,18 +17,30 @@ body {
 	height: 100vh;
 }
 
-nav {
-	background: #d0d0d0;
-	padding: 5px 10px;
-}
-
 input,
+span,
 button {
 	font-size: 1rem;
 }
 
+header {
+	margin: 15px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-self: baseline;
+}
+
+header form {
+	display: contents;
+}
+
+header span:hover {
+	cursor: default;
+}
+
 section {
-	padding: 10px;
+	margin: 15px;
 }
 
 .flex-center {
@@ -74,9 +87,16 @@ section {
 	outline: none;
 }
 
-.login-cnt button {
-	font-weight: bold;
-	padding: var(--pad-2);
+
+button.unpopular {
+	border: none;
+	background-color: inherit;
+	padding: 0;
+}
+
+button.unpopular:hover {
+	text-decoration: underline;
+	background-color: inherit;
 }
 
 a.btn {
@@ -111,7 +131,7 @@ button:hover, a.btn:hover {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(250px, 400px));
 	gap: 10px;
-	padding: 10px;
+	padding: 10px 0;
 }
 
 .otp-card {
@@ -165,7 +185,9 @@ button:hover, a.btn:hover {
 
 .highlight {
 	background-color: var(--pri-highlight);
+	font-weight: bold;
 	color: white;
+	padding: var(--pad-2) var(--pad-4);
 }
 
 .highlight:hover {

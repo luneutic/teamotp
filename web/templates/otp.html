@@ -4,19 +4,32 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/static/css/style.css">
+  <script src="https://kit.fontawesome.com/8fa045ff22.js" crossorigin="anonymous"></script>
   <title>TeamOTP</title>
 </head>
 
 <body>
-  <nav>
+  <header>
+    <span>
+      <i class="fa-regular fa-user"></i>
+      {{ .username }}
+    </span>
+
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="coming soon" disabled>
+    </div>
+
     <form action="/logout" method="get">
-      <button type="submit">Logout</button>
+      <button id="btn-signout" class="unpopular" type="submit">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        Sign out
+      </button>
     </form>
-  </nav>
+  </header>
 
   <section>
     <form action="/otp/qrscan" method="get">
-      <button type="submit">Add new OTP</button>
+      <button class="highlight" type="submit">Add new OTP</button>
     </form>
 
     <div class="otp-cnt">
@@ -32,6 +45,7 @@
     </div>
   </section>
 
+  <script src="/static/js/main.js"></script>
   <script src="/static/js/otp.js"></script>
   <script src="/static/js/timer.js"></script>
 </body>
