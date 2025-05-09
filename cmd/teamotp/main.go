@@ -16,7 +16,7 @@ import (
 	"github.com/xlzd/gotp"
 )
 
-const version = "0.1.0"
+const version = "0.1.1"
 
 func init() {
 	loadConfig("data/config.toml")
